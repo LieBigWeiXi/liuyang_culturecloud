@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:layout_margin="5dp"
+    android:weightSum="7">
+    <!--左侧布局2/7-->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        android:weightSum="2">
+        <ImageView
+            android:id="@+id/wen_hua_yi_chan_img"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/wen_hua_yi_chan" />
+        <ImageView
+            android:id="@+id/wen_ti_chang_guan_img"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/wen_ti_chang_guan" />
+    </LinearLayout> <!--主界面左侧布局-->
+
+    <!--主界面中间布局3/7-->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:weightSum="3">
+        <ImageView
+            android:id="@+id/wen_hua_liu_yang_img"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/wen_hua_liu_yang" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:weightSum="3">
+            <ImageView
+                android:id="@+id/lian_xi_wo_men_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/lian_xi_wo_men" />
+            <ImageView
+                android:id="@+id/shu_xiang_liu_yang_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/shu_xiang_liu_yang" />
+            <ImageView
+                android:id="@+id/zheng_wu_fu_wu_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/zheng_wu_fu_wu" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--主界面右侧布局2/7-->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:layout_marginLeft="8dp"
+        android:orientation="vertical"
+        android:weightSum="2">
+        <ImageView
+            android:id="@+id/wen_ti_dong_tai_img"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/wen_ti_dong_tai" />
+        <ImageView
+            android:id="@+id/wen_hua_shi_chang_img"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/wen_hua_shi_chang" />
+    </LinearLayout><!--主界面布局-->
+</LinearLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center"
+        android:text="今日"
+        android:textColor="#fff"
+        android:textSize="10sp" />
+    <ImageView
+        android:id="@+id/today_weatherIcon"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center"
+        android:src="@drawable/sun" />
+    <TextView
+        android:id="@+id/today_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center"
+        android:text="晴"
+        android:textColor="#fff"
+        android:textSize="10sp" />
+    <TextView
+        android:id="@+id/today_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center"
+        android:text="0/0 ℃"
+        android:textColor="#FBE7E8ED"
+        android:textSize="10sp" />
+
+
+    <ImageView
+        android:layout_width="10dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center"
+        android:src="@drawable/split_icno"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center"
+        android:text="明日"
+        android:textColor="#fff"
+        android:textSize="10sp" />
+    <ImageView
+        android:id="@+id/tomorrow_weatherIcon"
+        android:layout_width="15dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center"
+        android:src="@drawable/sun" />
+
+    <TextView
+        android:id="@+id/tomorrow_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:text="晴"
+        android:layout_gravity="center"
+        android:textColor="#fff"
+        android:textSize="10sp" />
+    <TextView
+        android:id="@+id/tomorrow_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:text="0/0 ℃"
+        android:layout_gravity="center"
+        android:textColor="#FBE7E8ED"
+        android:textSize="10sp" />
+
+</LinearLayout>
