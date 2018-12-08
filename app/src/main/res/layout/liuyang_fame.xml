@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.culturecloud.Activity.InfomationActivity"
+    android:background="@drawable/infomation_bkg">
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130px"
+        android:letterSpacing="0.5"
+        android:textColor="@color/brown"
+        android:text="详细信息标题"
+        android:gravity="center"
+        android:textSize="30sp"/>
+    <LinearLayout
+        android:layout_width="1200px"
+        android:layout_height="450px"
+        android:layout_below="@+id/title_text"
+        android:layout_marginTop="150px"
+        android:layout_centerInParent="true"
+        android:weightSum="10">
+        <ImageView
+            android:id="@+id/image_view_fy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:paddingLeft="50px"
+            android:scaleType="centerCrop"
+            android:src="@drawable/infomation_bkg"/>
+        <WebView
+            android:id="@+id/text_fy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:layout_marginRight="80px" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/information_return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/infomation_return"/>
+
+</RelativeLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dell.liuyang_culturecloud.Activity.ShowMoreInfo"
+    android:background="@drawable/show_bkg">
+
+    <TextView
+        android:id="@+id/title_textView"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="29dp"
+        android:text="标题"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:gravity="center" />
+
+    <ImageView
+        android:id="@+id/whyc_cover"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_alignEnd="@+id/whyc_intro_web"
+        android:layout_alignRight="@+id/whyc_intro_web"
+        android:layout_below="@+id/title_textView"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="41dp"
+        android:layout_marginTop="23dp"
+        android:background="@color/policy_name" />
+
+    <WebView
+        android:id="@+id/whyc_intro_web"
+        android:layout_width="400dp"
+        android:layout_height="120dp"
+        android:layout_margin="8dp"
+        android:layout_below="@+id/whyc_cover">
+    </WebView>
+
+    <WebView
+        android:id="@+id/whyc_info_web"
+        android:layout_width="545dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true">
+    </WebView>
+
+    <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

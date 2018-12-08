@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:background="@drawable/right">
+        <!--ImageView
+            android:id = "@+id/iv_before"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="22dp"
+            android:src="@drawable/ic_before"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"/-->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="10"
+            android:id="@+id/big_pic"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:text="Introduce"
+            android:padding="100dp"/>
+        <!--ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id = "@+id/iv_next"
+            android:src="@drawable/ic_next"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"/-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:layout_marginRight="55dp"
+        android:layout_marginLeft="80dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/cul_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="horizontal"
+            android:scrollbarThumbHorizontal="@color/scrollBar"
+            android:scrollbarSize="5dp"/>
+    </LinearLayout>
+
+</LinearLayout>

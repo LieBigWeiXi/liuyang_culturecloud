@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scenery_play"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.culturecloud.Activity.SceneryPlayActivity"
+    android:background="@drawable/scenery_play_bkg">
+
+    <ImageView
+        android:orientation="vertical"
+        android:id="@+id/scenery_layout"
+        android:layout_width="1350px"
+        android:layout_height="800px"
+        android:scaleType="fitXY"
+        android:src="@drawable/prev_back"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="280dp"
+        android:background="#5C5F60"/>
+
+    <Button
+        android:id="@+id/btn_id"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/scenery_return_btn">
+    </Button>
+</RelativeLayout>

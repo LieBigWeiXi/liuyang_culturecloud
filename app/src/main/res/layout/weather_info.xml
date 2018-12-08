@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="9"
+    android:background="@drawable/video_paly_bkg">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:weightSum="2"
+        android:layout_height="0dp"
+        android:layout_weight="8" >
+
+        <LinearLayout
+            android:background="#119988ff"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:weightSum="7">
+            <RelativeLayout
+                android:layout_centerInParent="true"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:backgroundTint="#fff"
+                android:layout_weight="4">
+
+                <RelativeLayout
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/tv_temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30℃"
+                        android:textSize="100sp"
+                        android:textColor="#f2f2f2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="℃"
+                        android:textSize="25sp"
+                        android:textColor="#fff"
+                        android:layout_toRightOf="@+id/tv_temp"
+                        android:layout_alignTop="@+id/tv_temp" />
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_weather_date"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:textSize="25sp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2" >
+                <TextView
+                    android:paddingBottom="5dp"
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="中国"
+                    android:textSize="30sp"
+                    android:textColor="#f2f2f2"/>
+                <TextView
+                    android:id="@+id/tv_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="晴"
+                    android:textSize="20dp"
+                    android:layout_toRightOf="@+id/tv_location"
+                    android:layout_alignBottom="@+id/tv_location"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#f2f2f2"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/tv_wind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="风    |    3级"
+                    android:textSize="25sp"
+                    android:textColor="#f2f2f2"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_weight="1"
+            android:id="@+id/rv_weather"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+        <com.example.culturecloud.Views.ReturnButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.example.culturecloud.Views.ReturnButton>
+    </LinearLayout>
+
+</LinearLayout>

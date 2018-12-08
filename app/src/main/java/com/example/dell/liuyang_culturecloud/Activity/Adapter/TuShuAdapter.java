@@ -1,0 +1,84 @@
+package com.example.culturecloud.Adapter;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.example.culturecloud.R;
+import com.example.culturecloud.StaticResources.NetworkInfo;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by DELL on 2018/12/6.
+ */
+
+public class TuShuAdapter extends RecyclerView.Adapter<TuShuAdapter.ViewHolder>  {
+    List<String> dataList =  new ArrayList<>();
+    Context  context;
+    OnClickCallBack onClickCallBack;
+    int  width;
+
+    public TuShuAdapter(Context context, TuShuAdapter.OnClickCallBack onClickCallBack, int width){
+        this.context = context;
+        Log.d("ok","ok");
+        this.onClickCallBack = onClickCallBack;
+        this.width = width;
+    }
+    static class ViewHolder extends RecyclerView.ViewHolder{
+        ImageView imageView;
+        public ViewHolder(View itemView) {
+            super(itemView);
+            imageView = (ImageView)itemView.findViewById(R.id.cul_person_item);
+           /* mTextView = (TextView)itemView.findViewById(R.id.title_name);
+            mTextView.setSelected(true);*/
+        }
+    }
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        String data = dataList.get(position);
+        Picasso.with(context)
+                .load(NetworkInfo.NEW_IP_ADDRESS+"/media/"+data)
+                .into(holder.imageView);
+        holder.imageView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                onClickCallBack.OnClink(position);
+            }
+        });
+    }
+
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cul_person_item,
+                parent,false);
+        view.getLayoutParams().width =width/6;
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
+    }
+
+    public int getItemCount(){
+        Log.d("unload",String.valueOf(dataList.size()));
+        return dataList.size();
+    }
+
+    public void addDataList(List<String> dataList) {
+        this.dataList.addAll(dataList);
+    }
+
+    public void setDataList(List<String> dataList) {
+        this.dataList = dataList;
+    }
+
+    public interface OnClickCallBack{
+        public void OnClink(int id);
+    }
+    public void clear() {
+        dataList.clear();
+        notifyDataSetChanged();
+    }
+}

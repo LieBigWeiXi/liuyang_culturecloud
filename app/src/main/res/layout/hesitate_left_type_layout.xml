@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--左侧布局 文化遗产-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_layout"
+    android:layout_width="0dp"
+    android:layout_weight="3"
+    android:layout_height="match_parent"
+    android:background="@drawable/left_type_bkg"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/title_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="文化遗产"
+        android:textColor="#fff"
+        android:textSize="38sp"
+        android:textStyle="italic"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="20dp"/>
+    <ListView
+        android:id="@+id/wenhuayichan_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100px"
+        android:layout_marginRight="17px"
+        android:divider="@android:color/transparent" />
+
+</LinearLayout>
