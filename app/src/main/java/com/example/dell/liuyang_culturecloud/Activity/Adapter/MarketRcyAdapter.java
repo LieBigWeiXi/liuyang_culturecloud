@@ -1,4 +1,4 @@
-package com.example.culturecloud.Adapter;
+package com.example.dell.liuyang_culturecloud.Activity.Adapter;
 
 import android.content.Context;
 import android.os.Handler;
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.culturecloud.Bean.WenHuaShiChangBean;
-import com.example.culturecloud.R;
-import com.example.culturecloud.StaticResources.NetworkInfo;
+import com.example.dell.liuyang_culturecloud.Activity.Bean.WenHuaShiChangBean;
+import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
+import com.example.dell.liuyang_culturecloud.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ public class MarketRcyAdapter extends RecyclerView.Adapter<MarketRcyAdapter.View
         WenHuaShiChangBean.WHSC data = WHSC_DataList.get(position);
 
         Picasso.with(context)
-                .load(NetworkInfo.NEW_IP_ADDRESS+"/media/"+data.getCover())
+                .load(NetworkInfo.IP_ADDRESS+"/media/"+data.getCover())
                 .into(holder.imageView);
         holder.imageView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -63,9 +63,9 @@ public class MarketRcyAdapter extends RecyclerView.Adapter<MarketRcyAdapter.View
     }
     @Override
     public MarketRcyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cul_person_item,
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shichang_item,
                 parent,false);
-        view.getLayoutParams().width =width/6;
+        view.getLayoutParams().width =width/4;
         MarketRcyAdapter.ViewHolder holder = new MarketRcyAdapter.ViewHolder(view);
         return holder;
     }

@@ -1,9 +1,10 @@
-package com.example.culturecloud.HttpRequest;
+package com.example.dell.liuyang_culturecloud.Activity.HttpRequest;
 
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -26,44 +27,23 @@ import okhttp3.Response;
  */
 
 public class doRequest {
-
-    private doRequest(){}
-    private  OkHttpClient mOkHttpClient;
+    private  OkHttpClient mOkHttpClient = new OkHttpClient();
     private static doRequest instance;
+    private Context mContext;
+    private doRequest(){}
+    private doRequest(Context context){
+        this.mContext = context;
+    }
 
     public static doRequest getInstance(Context context){
         if(instance==null){
-            instance = new doRequest();
-            instance.init(context);
+            instance = new doRequest(context);
         }
         return  instance;
     }
 
-     public void init(final Context context){
-        mOkHttpClient = new OkHttpClient.Builder() .cookieJar(new CookieJar() {
-            PersistentCookieStore cookieStore = new PersistentCookieStore(context);
-            @Override
-            public void saveFromResponse(HttpUrl url, List<Cookie> cookies){
-                if (cookies != null && cookies.size() > 0) {
-                    for (Cookie item : cookies) {
-                        Log.w("cookies",item.name());
-                        cookieStore.add(url, item);
 
-                    }
-                }
-            }
-
-            @Override
-            public List<Cookie> loadForRequest(HttpUrl url){
-                List<Cookie> cookies = cookieStore.get(url);
-                return cookies != null ? cookies : new ArrayList<Cookie>();
-            }
-        }).build();
-    }
-
-
-
-    public  void doPost(final String url, final Object object, final Handler handler,final int msg_what){
+    public  void doPost(final String url, final Object object, final Handler handler, final int msg_what){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -83,7 +63,7 @@ public class doRequest {
                         message.obj = responseData; //将返回的数据传给消息携带者Message
                         handler.sendMessage(message);
                     }else{
-                        // Toast.makeText(getApplicationContext(),"网络连接异常，无法获取服务器返回数据！",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext,"网络连接异常，无法获取服务器返回数据！",Toast.LENGTH_SHORT).show();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -103,6 +83,7 @@ public class doRequest {
                 try {
                     Response response = mOkHttpClient.newCall(request).execute();
                     String responseData = response.body().string();
+                    Log.d("doRequest", "run: responseData"+responseData);
                     Message message = new Message();
                     message.what = msg_what;
                     message.obj = responseData;

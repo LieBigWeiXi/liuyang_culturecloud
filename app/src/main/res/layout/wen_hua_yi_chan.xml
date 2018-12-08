@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dell.liuyang_culturecloud.Activity.WenHuaYiChan">
+    android:background="@drawable/hesitate_bkg">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/hesitate_left_type_layout"/>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlPrimaryColor="#444444"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="45dp"
+            app:srlAccentColor="@android:color/white"
+            app:srlEnablePreviewInEditMode="true">
+            <GridView
+                android:layout_margin="10dp"
+                android:id="@+id/wenhuayichan_gridview"
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_height="match_parent"
+                android:horizontalSpacing="10dp"
+                android:numColumns="4"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="15dp"
+                android:visibility="visible" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+    </LinearLayout>
+
+
+
+    <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

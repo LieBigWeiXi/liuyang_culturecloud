@@ -1,4 +1,4 @@
-package com.example.culturecloud.Bean;
+package com.example.dell.liuyang_culturecloud.Activity.Bean;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,4 +1,4 @@
-package com.example.culturecloud.Bean;
+package com.example.dell.liuyang_culturecloud.Activity.Bean;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,13 +12,13 @@ public class LibBean {
     int total;
     List<Lib> rows = new ArrayList<>();
     public static class Lib{
-        int    id;
-        String name;
-        String cover;
-        int    type;
-        String info;
-        String url;
-        List <String> carousel;
+        int          id;
+        String       name;
+        String       cover;
+        int          type;
+        String       info;
+        String       url;
+        List<String> carousel;
 
         public List<String> getCarousel() {
             return carousel;

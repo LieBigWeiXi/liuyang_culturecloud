@@ -12,9 +12,9 @@
             android:layout_height="match_parent" />
     </RelativeLayout>
 
-     <com.example.culturecloud.Views.ReturnButton
+     <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
          android:layout_width="wrap_content"
          android:layout_height="wrap_content">
-     </com.example.culturecloud.Views.ReturnButton>
+     </com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton>
 
 </RelativeLayout>

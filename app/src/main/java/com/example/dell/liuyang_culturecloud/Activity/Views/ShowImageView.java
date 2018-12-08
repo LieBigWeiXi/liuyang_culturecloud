@@ -1,4 +1,4 @@
-package com.example.culturecloud.Views;
+package com.example.dell.liuyang_culturecloud.Activity.Views;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -17,22 +17,21 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.culturecloud.Activity.SceneryLoadActivity;
-import com.example.culturecloud.Bean.pointBean;
-import com.example.culturecloud.MyTools.PicTool;
+import com.example.dell.liuyang_culturecloud.Activity.Bean.pointBean;
+import com.example.dell.liuyang_culturecloud.Activity.MyTools.PicTool;
+import com.example.dell.liuyang_culturecloud.Activity.SceneryLoadActivity;
 
 import java.util.HashMap;
 
-
 public class ShowImageView extends View {
-	Bitmap fore_bitmap;//声明Bitmap类
-	Bitmap back_bitmap;//声明Bitmap类
-	Bitmap temp_bitmap;//声明Bitmap类
-	Canvas canvasTemp;//声明画布类
-	Paint paint;//声明画笔类
-	Path path;//画图类
-	int width;//声明width变量
-	int height;//声明height变量
+	Bitmap  fore_bitmap;//声明Bitmap类
+	Bitmap  back_bitmap;//声明Bitmap类
+	Bitmap  temp_bitmap;//声明Bitmap类
+	Canvas  canvasTemp;//声明画布类
+	Paint   paint;//声明画笔类
+	Path    path;//画图类
+	int     width;//声明width变量
+	int     height;//声明height变量
 	Context context;
 	HashMap<Integer,pointBean> points = new HashMap<Integer, pointBean>();
 	Matrix matrix;//使用矩阵控制图片移动、缩放、旋转
@@ -142,7 +141,7 @@ public class ShowImageView extends View {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				int c=HtImage.rgbPixelAvg(bitmap,width,height);
+				int c= HtImage.rgbPixelAvg(bitmap,width,height);
 				if(c<175&&c>0)
 				{
 					Message msg=new Message();

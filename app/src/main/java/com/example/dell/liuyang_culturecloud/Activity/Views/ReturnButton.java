@@ -1,4 +1,4 @@
-package com.example.culturecloud.Views;
+package com.example.dell.liuyang_culturecloud.Activity.Views;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,9 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
+import com.example.dell.liuyang_culturecloud.R;
 
-import com.example.culturecloud.R;
 
 /**
  * Created by DELL on 2018/7/12.

@@ -1,4 +1,4 @@
-package com.example.culturecloud.Adapter;
+package com.example.dell.liuyang_culturecloud.Activity.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,14 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.culturecloud.Bean.TypeBean;
-import com.example.culturecloud.R;
+
+import com.example.dell.liuyang_culturecloud.Activity.Bean.TypeBean;
+import com.example.dell.liuyang_culturecloud.R;
 
 import java.util.List;
-
-/**
- * Created by DELL on 2018/12/4.
- */
 
 public class TypeBeanAdapter extends ArrayAdapter<TypeBean> {
 
@@ -47,18 +44,17 @@ public class TypeBeanAdapter extends ArrayAdapter<TypeBean> {
         }
         viewHolder.type_name.setText(typeBean.getDt_name());
         viewHolder.type_icon.setImageResource(typeBean.getDt_icon());
-        Log.d("----", "getView: "+selected_id);
         if(typeBean.getId()==selected_id){
             viewHolder.bkg_view.setBackgroundResource(R.drawable.chg_bkg);
         }else {
-            viewHolder.bkg_view.setBackground(null);
+            viewHolder.bkg_view.setBackgroundResource(0);
         }
         return view;
     }
     public class ViewHolder{
         TextView  type_name;
         ImageView type_icon;
-        View bkg_view;
+        View      bkg_view;
     }
     @Override
     public int getCount() {

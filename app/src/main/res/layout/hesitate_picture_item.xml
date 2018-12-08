@@ -4,22 +4,22 @@
     android:orientation="vertical"
     android:layout_marginTop="50dp"
     android:weightSum="6"
-    android:layout_height="370dp">
+    android:layout_height="180dp">
     <ImageView
         android:layout_width="match_parent"
         android:layout_weight="5"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         android:id="@+id/history_img"
         android:layout_height="0dp" />
     <TextView
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:text="测试标题"
-        android:textSize="20dp"
+        android:textSize="10sp"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_height="0dp"
         android:textColor="#fff"
-        android:background="@color/policy_name"
+        android:background="@color/hesitate"
         android:id="@+id/history_title" />
 </LinearLayout>

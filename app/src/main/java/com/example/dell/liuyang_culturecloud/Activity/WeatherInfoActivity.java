@@ -1,27 +1,15 @@
-package com.example.culturecloud.Activity;
+package com.example.dell.liuyang_culturecloud.Activity;
 
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.culturecloud.Adapter.WeatherAdapter;
-import com.example.culturecloud.Bean.AddressBean;
-import com.example.culturecloud.Bean.CastsBean;
-import com.example.culturecloud.Bean.ForecastsBean;
-import com.example.culturecloud.Bean.WeatherBean;
-import com.example.culturecloud.HttpRequest.doRequest;
-import com.example.culturecloud.R;
-import com.example.culturecloud.StaticResources.NetworkInfo;
-import com.example.culturecloud.db.City;
-import com.google.gson.Gson;
+import com.example.dell.liuyang_culturecloud.Activity.Adapter.WeatherAdapter;
+import com.example.dell.liuyang_culturecloud.Activity.Bean.CastsBean;
+import com.example.dell.liuyang_culturecloud.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,7 +24,7 @@ public class WeatherInfoActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weather_info);
+        setContentView(R.layout.weather_info);
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.rv_weather);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         GridLayoutManager manager = new GridLayoutManager(this,4);
@@ -48,7 +36,7 @@ public class WeatherInfoActivity extends BaseActivity {
         tv_date = (TextView)findViewById(R.id.tv_weather_date);
 
         recyclerView.setLayoutManager(manager);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         castlist = (List<CastsBean>) getIntent().getSerializableExtra("weather_data");
         //Log.d("WeatherInfo", "onCreate:date "+castlist.get(0).getDate());

@@ -1,9 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dell.liuyang_culturecloud.Activity.WenTiDongTai">
+    tools:context="com.example.dell.liuyang_culturecloud.Activity.WenTiDongTai"
+    android:background="@drawable/dong_tai_bkg">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="700dp"
+        android:layout_height="72dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="280dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:id="@+id/work_dynamic"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/chg_bkg"
+            android:layout_marginBottom="3dp"
+            android:orientation="horizontal"
+            android:paddingLeft="50dp">
+
+            <ImageView
+                android:id="@+id/wen_hua_place_icon"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/all" />
+
+            <TextView
+                android:id="@+id/work_dynamic_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="工作动态"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/famer_activity"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingLeft="50dp">
+
+            <ImageView
+                android:id="@+id/famer_activity_icon"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/all" />
+
+            <TextView
+                android:id="@+id/famer_activity_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="品牌活动"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/people_things"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingLeft="50dp">
+
+            <ImageView
+                android:id="@+id/people_things_icon"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/all" />
+
+            <TextView
+                android:id="@+id/people_things_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="民生实事"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/first_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="50dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/work_dynamic_layout"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/people_things_img"
+        android:layout_alignTop="@+id/first_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="50dp"
+        android:visibility="invisible"/>
+
+
+    <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton>
+
+</RelativeLayout>

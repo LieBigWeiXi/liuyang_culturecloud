@@ -1,9 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dell.liuyang_culturecloud.Activity.WenTiChangGuan">
+    tools:context="com.example.dell.liuyang_culturecloud.Activity.WenTiChangGuan"
+    android:background="@drawable/place_bkg">
 
-</android.support.constraint.ConstraintLayout>
+    <!--场馆分类-->
+    <LinearLayout
+        android:layout_width="700dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="280dp"
+        android:background="@color/policy_name"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <LinearLayout
+            android:id="@+id/wen_hua_place"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="50dp"
+            android:background="@drawable/chg_bkg">
+
+            <ImageView
+                android:id="@+id/wen_hua_place_icon"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/all"/>
+            <TextView
+                android:id="@+id/wen_hua_place_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="文化场馆"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ti_yu_place"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="50dp">
+
+            <ImageView
+                android:id="@+id/ti_yu_place_icon"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/all"/>
+            <TextView
+                android:id="@+id/ti_yu_place_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="体育场馆"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="100dp"
+        app:srlPrimaryColor="#444444"
+        app:srlAccentColor="@android:color/white"
+        app:srlEnablePreviewInEditMode="true">
+
+        <GridView
+            android:id="@+id/place_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:horizontalSpacing="25dp"
+            android:numColumns="4"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="25dp"
+            android:visibility="visible">
+        </GridView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
+    <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

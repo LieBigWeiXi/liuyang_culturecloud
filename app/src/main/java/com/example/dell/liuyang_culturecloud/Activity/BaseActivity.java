@@ -7,12 +7,16 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.dell.liuyang_culturecloud.Activity.Bean.DoPostBean;
+import com.example.dell.liuyang_culturecloud.Activity.HttpRequest.doRequest;
+import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
+
 public class BaseActivity extends AppCompatActivity {
 
-   /* String URL;//发起网络请求
-    doRequest http_request = doRequest.getInstance(this);
-    DoPostBean mDoPostBean = new DoPostBean();
-    FatherBean mFatherBean;//解析出来的网络实体*/
+    String URL = NetworkInfo.IP_ADDRESS;//发起网络请求
+    doRequest  http_request = doRequest.getInstance(this);
+    DoPostBean mDoPostBean  = new DoPostBean();
+    //FatherBean mFatherBean;//解析出来的网络实体
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +24,8 @@ public class BaseActivity extends AppCompatActivity {
         Window _window;
         _window = getWindow();
         WindowManager.LayoutParams params = _window.getAttributes();
-        params.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION| View.SYSTEM_UI_FLAG_IMMERSIVE;
+        params.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|View.SYSTEM_UI_FLAG_IMMERSIVE;
+
         _window.setAttributes(params);
 
         ActionBar actionBar = getSupportActionBar();

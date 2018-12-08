@@ -1,4 +1,4 @@
-package com.example.culturecloud.Bean;
+package com.example.dell.liuyang_culturecloud.Activity.Bean;
 
 /**
  * Created by 村长 on 2018/7/4.
@@ -6,9 +6,9 @@ package com.example.culturecloud.Bean;
 
 public class AddressBean {
 
-    private int status;
+    private int    status;
     private String info;
-    private int infocode;
+    private int    infocode;
     private String province;
     private String city;
     private String adcode;

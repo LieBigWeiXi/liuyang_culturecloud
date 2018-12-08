@@ -7,26 +7,26 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:text="浏 阳 文 广 局"
+        android:textSize="20sp"
+        android:text="浏 阳 市 文 广 局"
         android:textColor="#fff"
         android:textStyle="italic|bold"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="13dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
        <WebView
-           android:layout_marginTop="50dp"
-           android:layout_marginLeft="80dp"
-           android:layout_marginRight="80dp"
-           android:layout_marginBottom="100dp"
+           android:layout_marginTop="25dp"
+           android:layout_marginLeft="40dp"
+           android:layout_marginRight="40dp"
+           android:layout_marginBottom="50dp"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:id="@+id/wenguangju_webview" />
 
-        <com.example.culturecloud.Views.ReturnButton
+        <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </RelativeLayout>

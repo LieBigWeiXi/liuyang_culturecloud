@@ -1,4 +1,4 @@
-package com.example.culturecloud.Bean;
+package com.example.dell.liuyang_culturecloud.Activity.Bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class MemoryBean {
         mPictures = pictures;
     }
 
-    public static class Pictures implements Serializable{
+    public static class Pictures implements Serializable {
        String id;
        String name;
        String new_picture;

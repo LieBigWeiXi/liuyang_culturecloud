@@ -1,9 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!--文化市场布局-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dell.liuyang_culturecloud.Activity.ShuXiangLiuYang">
+    android:orientation="horizontal"
+    android:weightSum="10"
+    android:background="@drawable/right">
 
-</android.support.constraint.ConstraintLayout>
+    <!--左侧布局-->
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/list_layout"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="match_parent"
+        android:background="@drawable/left_type_bkg"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/title_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="书香浏阳"
+            android:textColor="#fff"
+            android:textSize="19sp"
+            android:textStyle="italic"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="10dp"/>
+        <ListView
+            android:id="@+id/tushu_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="48dp"
+            android:layout_marginRight="5dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="5dp"/>
+
+    </LinearLayout>
+
+    <!--右侧布局-->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="7"
+        android:layout_marginTop="40dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10" >
+        <LinearLayout
+            android:layout_weight="8"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <include
+                android:id="@+id/wenhualiuyang_layout"
+                layout="@layout/tushu_right"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

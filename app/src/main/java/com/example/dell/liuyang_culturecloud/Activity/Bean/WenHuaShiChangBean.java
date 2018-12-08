@@ -1,4 +1,4 @@
-package com.example.culturecloud.Bean;
+package com.example.dell.liuyang_culturecloud.Activity.Bean;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,10 +14,10 @@ public class WenHuaShiChangBean {
     public static class WHSC{
         String name;
         String cover;
-        int type;
+        int    type;
         String info;
         String url;
-        Date release_time;
+        Date   release_time;
 
         public String getName() {
             return name;

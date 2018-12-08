@@ -1,9 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dell.liuyang_culturecloud.Activity.WenHuaLiuYang">
+    android:background="@drawable/wenhualiuyang_bkg">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="文 化 浏 阳"
+        android:textColor="#fff"
+        android:textStyle="italic|bold"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="13dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:weightSum="2">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingTop="50dp"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <ImageView
+                android:id="@+id/liuyang_jianjie"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="45dp"
+                android:background="@drawable/liuyang1" />
+            <ImageView
+                android:id="@+id/liuyang_wenguangju"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/liuyang2" />
+        </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <ImageView
+                android:id="@+id/liuyang_jiyi"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="45dp"
+                android:background="@drawable/liuyang3" />
+            <ImageView
+                android:id="@+id/liuyang_zhengce"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/liuyang4" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton>
+</RelativeLayout>

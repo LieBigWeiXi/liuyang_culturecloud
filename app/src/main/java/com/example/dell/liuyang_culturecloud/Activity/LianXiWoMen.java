@@ -3,7 +3,9 @@ package com.example.dell.liuyang_culturecloud.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class LianXiWoMen extends AppCompatActivity {
+import com.example.dell.liuyang_culturecloud.R;
+
+public class LianXiWoMen extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

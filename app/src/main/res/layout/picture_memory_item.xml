@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="30dp"
     android:weightSum="6"
-    android:layout_height="370dp">
+    android:layout_height="180dp">
     <ImageView
         android:layout_width="match_parent"
         android:layout_weight="5"
@@ -19,9 +18,9 @@
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:background="@color/green"
+        android:background="@color/colorGray"
         android:gravity="center"
         android:text="测试标题"
         android:textColor="#fff"
-        android:textSize="20dp" />
+        android:textSize="10sp" />
 </LinearLayout>

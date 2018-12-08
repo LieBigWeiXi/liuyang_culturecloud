@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dell.liuyang_culturecloud.Activity.Bean.WenHuaPlaceBean;
 import com.example.dell.liuyang_culturecloud.Activity.Bean.WenHuaYiChanBean;
 import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
 import com.example.dell.liuyang_culturecloud.R;
@@ -24,26 +25,26 @@ import java.util.List;
  * Created by DELL on 2018/12/4.
  */
 
-public class GridViewAdpater extends BaseAdapter {
+public class PlaceGridViewAdpater extends BaseAdapter {
 
     private Context        mContext;
     private LayoutInflater layoutInflater;
-    private List<WenHuaYiChanBean.Data> mWHYCList = new ArrayList<>();
+    private List<WenHuaPlaceBean.Data> mdataList = new ArrayList<>();
 
-    public GridViewAdpater(Context context) {
+    public PlaceGridViewAdpater(Context context) {
         this.mContext = context;
         layoutInflater = LayoutInflater.from(context);
-        mWHYCList = new ArrayList<WenHuaYiChanBean.Data>();//初始化集合
+        mdataList = new ArrayList<WenHuaPlaceBean.Data>();//初始化集合
     }
 
     @Override
     public int getCount() {
-        return mWHYCList.size();
+        return mdataList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mWHYCList.get(position);
+        return mdataList.get(position);
     }
 
     @Override
@@ -54,27 +55,25 @@ public class GridViewAdpater extends BaseAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        WenHuaYiChanBean.Data wenHuaYiChan = mWHYCList.get(position);
+        WenHuaPlaceBean.Data wenHuaPlace = mdataList.get(position);
         View view;
         ViewHolder viewHolder;
         if(convertView==null){//无缓存加载
-            convertView = layoutInflater.inflate(R.layout.hesitate_picture_item,parent,false);
+            convertView = layoutInflater.inflate(R.layout.place_item,parent,false);
             viewHolder = new ViewHolder();
-            viewHolder.mTextView_name = (TextView) convertView.findViewById(R.id.history_title);
-            viewHolder.mImageView_cover = (ImageView)convertView.findViewById(R.id.history_img);
+            viewHolder.mTextView_name = (TextView) convertView.findViewById(R.id.title);
+            viewHolder.mImageView_cover = (ImageView)convertView.findViewById(R.id.image);
             convertView.setTag(viewHolder);//将viewHolder存储在view中
         }else{//调用缓存view
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        Log.d("Adapter", "getView: "+ String.valueOf(position)+wenHuaYiChan.getName()+wenHuaYiChan.getCover());
-        WenHuaYiChanBean.Data whycBean = mWHYCList.get(position);
-        if(whycBean.getType()==2){
-            viewHolder.mImageView_cover.setScaleType(ImageView.ScaleType.FIT_XY);
-        }
+//        Log.d("Adapter", "getView: "+ String.valueOf(position)+wenHuaPlace.getName()+wenHuaPlace.getCover());
+        WenHuaPlaceBean.Data whycBean = mdataList.get(position);
+
         Picasso.with(mContext)
                 .load(NetworkInfo.IP_ADDRESS+"/media/"+whycBean.getCover())
                 .into(viewHolder.mImageView_cover);
-        viewHolder.mTextView_name.setText(wenHuaYiChan.getName());
+        viewHolder.mTextView_name.setText(whycBean.getName());
         return convertView;
     }
     public class ViewHolder{
@@ -83,12 +82,12 @@ public class GridViewAdpater extends BaseAdapter {
     }
 
 
-    public void setWHYCList(List<WenHuaYiChanBean.Data> WHYCList) {
-        this.mWHYCList = WHYCList;
+    public void setList(List<WenHuaPlaceBean.Data> WHYCList) {
+        this.mdataList = WHYCList;
     }
 
     public void clear() {
-        mWHYCList.clear();
+        mdataList.clear();
         notifyDataSetChanged();
     }
 }

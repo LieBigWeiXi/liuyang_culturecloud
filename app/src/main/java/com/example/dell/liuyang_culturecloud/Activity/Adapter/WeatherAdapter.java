@@ -1,4 +1,4 @@
-package com.example.culturecloud.Adapter;
+package com.example.dell.liuyang_culturecloud.Activity.Adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,15 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.culturecloud.Activity.MainActivity;
-import com.example.culturecloud.Bean.CastsBean;
+import com.example.dell.liuyang_culturecloud.Activity.Bean.CastsBean;
+import com.example.dell.liuyang_culturecloud.Activity.MainActivity;
+import com.example.dell.liuyang_culturecloud.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import com.example.culturecloud.R;
-import com.google.gson.internal.bind.DateTypeAdapter;
 
 /**
  * Created by DELL on 2018/7/9.

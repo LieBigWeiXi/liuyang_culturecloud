@@ -3,4 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorGray">#7b7c797a</color>
+    <color name="policy_name">#7d023861</color>
+    <color name="colorBlack">#000000</color>
+    <color name="brown">#FF261B08</color>
+    <color name="hesitate">#0e3e4e</color>
+    <color name="place_name">#e6dbc5</color>
+    <color name="scrollBar">#da079cc7</color>
 </resources>

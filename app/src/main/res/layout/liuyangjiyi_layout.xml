@@ -7,18 +7,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
+        android:textSize="20sp"
         android:text="浏 阳 记 忆"
         android:textColor="#fff"
         android:textStyle="italic|bold"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="13dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp">
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -29,19 +29,19 @@
             app:srlAccentColor="@android:color/white"
             app:srlEnablePreviewInEditMode="true">
             <GridView
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:id="@+id/oldpic_gridview"
                 android:layout_width="match_parent"
                 android:scaleType="centerCrop"
                 android:layout_height="match_parent"
-                android:horizontalSpacing="50dp"
+                android:horizontalSpacing="25dp"
                 android:numColumns="5"
                 android:stretchMode="columnWidth"
-                android:verticalSpacing="50dp"
+                android:verticalSpacing="25dp"
                 android:visibility="visible" />
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-        <com.example.culturecloud.Views.ReturnButton
+        <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

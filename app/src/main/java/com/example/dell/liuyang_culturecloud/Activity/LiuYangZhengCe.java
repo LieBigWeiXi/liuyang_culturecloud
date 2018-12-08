@@ -1,4 +1,4 @@
-package com.example.culturecloud.Activity;
+package com.example.dell.liuyang_culturecloud.Activity;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,12 +10,12 @@ import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.culturecloud.Adapter.PolicyAdapter;
-import com.example.culturecloud.Bean.DoPostBean;
-import com.example.culturecloud.Bean.PolicyBean;
-import com.example.culturecloud.HttpRequest.doRequest;
-import com.example.culturecloud.R;
-import com.example.culturecloud.StaticResources.NetworkInfo;
+import com.example.dell.liuyang_culturecloud.Activity.Adapter.PolicyAdapter;
+import com.example.dell.liuyang_culturecloud.Activity.Bean.DoPostBean;
+import com.example.dell.liuyang_culturecloud.Activity.Bean.PolicyBean;
+import com.example.dell.liuyang_culturecloud.Activity.HttpRequest.doRequest;
+import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
+import com.example.dell.liuyang_culturecloud.R;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -26,11 +26,10 @@ import java.util.List;
  */
 
 public class LiuYangZhengCe extends BaseActivity {
-    private doRequest request ;
     private WebView   policy_wv;
     private List<PolicyBean.policy> mPolicys = new ArrayList<>();
     private ListView mListView;
-    String url = NetworkInfo.NEW_IP_ADDRESS+NetworkInfo.LIU_YANG_ZHENG_CE;
+    String  url     = NetworkInfo.IP_ADDRESS+ NetworkInfo.LIU_YANG_ZHENG_CE;
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -44,7 +43,7 @@ public class LiuYangZhengCe extends BaseActivity {
                     mPolicys.addAll(policyBean.rows);
                     PolicyAdapter policyAdapter = new PolicyAdapter(LiuYangZhengCe.this,
                             R.layout.policy_item_layout,mPolicys);
-                    Log.d("count", "onCreate: "+String.valueOf(policyAdapter.getCount()));
+                    Log.d("count", "onCreate: "+ String.valueOf(policyAdapter.getCount()));
                     mListView.setAdapter(policyAdapter);
                     policy_wv.loadUrl(mPolicys.get(0).getUrl());
                     policyAdapter.notifyDataSetChanged();
@@ -63,10 +62,7 @@ public class LiuYangZhengCe extends BaseActivity {
         policy_wv = (WebView)findViewById(R.id.zhengce_webview);
         policy_wv.getSettings().setJavaScriptEnabled(true);
         policy_wv.setWebViewClient(new WebViewClient());
-
-        request = doRequest.getInstance(getApplicationContext());
-        DoPostBean doPostBean = new DoPostBean(1,10,0);
-        request.doPost(url,doPostBean,handler,200);
+        http_request.doPost(url,mDoPostBean,handler,200);
         mListView = (ListView)findViewById(R.id.zhengce_listView);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

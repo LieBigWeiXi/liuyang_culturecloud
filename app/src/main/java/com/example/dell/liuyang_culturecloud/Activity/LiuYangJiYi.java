@@ -1,4 +1,4 @@
-package com.example.culturecloud.Activity;
+package com.example.dell.liuyang_culturecloud.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +10,11 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.example.culturecloud.Adapter.PictureAdapter;
-import com.example.culturecloud.Bean.DoPostBean;
-import com.example.culturecloud.Bean.MemoryBean;
-import com.example.culturecloud.HttpRequest.doRequest;
-import com.example.culturecloud.R;
-import com.example.culturecloud.StaticResources.NetworkInfo;
+import com.example.dell.liuyang_culturecloud.Activity.Adapter.MemoryAdapter;
+import com.example.dell.liuyang_culturecloud.Activity.Bean.MemoryBean;
+import com.example.dell.liuyang_culturecloud.Activity.HttpRequest.doRequest;
+import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
+import com.example.dell.liuyang_culturecloud.R;
 import com.google.gson.Gson;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -32,14 +31,14 @@ import java.util.List;
  */
 
 public class LiuYangJiYi extends BaseActivity {
-    private MemoryBean mMemoryBean = new MemoryBean();
+    private MemoryBean                mMemoryBean      = new MemoryBean();
     private List<MemoryBean.Pictures> picturesBeanList = new ArrayList<>();
-    private GridView       oldpic_gridview;
+    private GridView      oldpic_gridview;
     private RefreshLayout refreshLayout;
-    private PictureAdapter pictureAdapter;
-    doRequest      http_request;
-    DoPostBean bean = new DoPostBean();
-    String URL = NetworkInfo.NEW_IP_ADDRESS+NetworkInfo.LIU_YANG_JI_YI;
+    private MemoryAdapter mMemoryAdapter;
+
+    final String URL = NetworkInfo.IP_ADDRESS+ NetworkInfo.LIU_YANG_JI_YI;
+
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -51,11 +50,11 @@ public class LiuYangJiYi extends BaseActivity {
                     Log.d("",picturesData);
                     try {
                         mMemoryBean = gson.fromJson(picturesData,MemoryBean.class);
-                        Log.d("all",String.valueOf(mMemoryBean.getTotal()));
+                        Log.d("all", String.valueOf(mMemoryBean.getTotal()));
                         picturesBeanList.addAll(mMemoryBean.getRows());
-                        Log.d("size",String.valueOf(picturesBeanList.size()));
-                        pictureAdapter.setArrayList(picturesBeanList);
-                        pictureAdapter.notifyDataSetChanged();
+                        Log.d("size", String.valueOf(picturesBeanList.size()));
+                        mMemoryAdapter.setArrayList(picturesBeanList);
+                        mMemoryAdapter.notifyDataSetChanged();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -70,14 +69,14 @@ public class LiuYangJiYi extends BaseActivity {
         setContentView(R.layout.liuyangjiyi_layout);
         refreshLayout = (RefreshLayout)findViewById(R.id.refreshLayout);
         picturesBeanList = new ArrayList<>();
-        http_request = doRequest.getInstance(getApplicationContext());
-        bean.setRows(10);
-        bean.setPage(1);
-        //网络
-        http_request.doPost(URL,bean,handler,500);
+        mDoPostBean.setRows(10);
+        mDoPostBean.setPage(1);
+        //发起网络
+        http_request.doPost(URL,mDoPostBean,handler,500);
+
         oldpic_gridview = (GridView)findViewById(R.id.oldpic_gridview);
-        pictureAdapter = new PictureAdapter(this);
-        oldpic_gridview.setAdapter(pictureAdapter);
+        mMemoryAdapter = new MemoryAdapter(this);
+        oldpic_gridview.setAdapter(mMemoryAdapter);
         oldpic_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -94,10 +93,10 @@ public class LiuYangJiYi extends BaseActivity {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 picturesBeanList = new ArrayList<>();
-                pictureAdapter.clear();
-                bean.setRows(10);
-                bean.setPage(1);
-                http_request.doPost(URL,bean,handler,500);
+                mMemoryAdapter.clear();
+                mDoPostBean.setRows(10);
+                mDoPostBean.setPage(1);
+                http_request.doPost(URL,mDoPostBean,handler,500);
                 refreshlayout.finishRefresh(2000);
             }
         });
@@ -106,12 +105,12 @@ public class LiuYangJiYi extends BaseActivity {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
                 if(picturesBeanList.size()<mMemoryBean.getTotal()){
-                    bean.setRows(10);
-                    bean.setPage(bean.getPage()+1);
-                    http_request.doPost(URL,bean,handler,500);
+                    mDoPostBean.setRows(10);
+                    mDoPostBean.setPage(mDoPostBean.getPage()+1);
+                    http_request.doPost(URL,mDoPostBean,handler,500);
                     refreshlayout.finishLoadmore(2000);
                 }else{
-                    Toast.makeText(LiuYangJiYi.this,"加载完毕",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LiuYangJiYi.this,"加载完毕", Toast.LENGTH_SHORT).show();
                 }
             }
         });

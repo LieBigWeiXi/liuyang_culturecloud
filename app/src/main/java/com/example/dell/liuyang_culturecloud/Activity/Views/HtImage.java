@@ -1,4 +1,4 @@
-package com.example.culturecloud.Views;
+package com.example.dell.liuyang_culturecloud.Activity.Views;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;

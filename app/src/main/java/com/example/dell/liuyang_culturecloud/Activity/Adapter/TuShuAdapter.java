@@ -1,4 +1,4 @@
-package com.example.culturecloud.Adapter;
+package com.example.dell.liuyang_culturecloud.Activity.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.culturecloud.R;
-import com.example.culturecloud.StaticResources.NetworkInfo;
+import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
+import com.example.dell.liuyang_culturecloud.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -21,9 +21,9 @@ import java.util.List;
 
 public class TuShuAdapter extends RecyclerView.Adapter<TuShuAdapter.ViewHolder>  {
     List<String> dataList =  new ArrayList<>();
-    Context  context;
+    Context         context;
     OnClickCallBack onClickCallBack;
-    int  width;
+    int             width;
 
     public TuShuAdapter(Context context, TuShuAdapter.OnClickCallBack onClickCallBack, int width){
         this.context = context;
@@ -43,7 +43,7 @@ public class TuShuAdapter extends RecyclerView.Adapter<TuShuAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, final int position) {
         String data = dataList.get(position);
         Picasso.with(context)
-                .load(NetworkInfo.NEW_IP_ADDRESS+"/media/"+data)
+                .load(NetworkInfo.IP_ADDRESS+"/media/"+data)
                 .into(holder.imageView);
         holder.imageView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -54,15 +54,15 @@ public class TuShuAdapter extends RecyclerView.Adapter<TuShuAdapter.ViewHolder> 
     }
 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cul_person_item,
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tushu_pic_item,
                 parent,false);
-        view.getLayoutParams().width =width/6;
+        view.getLayoutParams().width =width/5;
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     public int getItemCount(){
-        Log.d("unload",String.valueOf(dataList.size()));
+        Log.d("unload", String.valueOf(dataList.size()));
         return dataList.size();
     }
 

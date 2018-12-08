@@ -2,26 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_margin="5dp"
-    android:weightSum="11"
-    android:layout_gravity="center_vertical">
+    android:weightSum="3"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/policy_item_bkg">
+
     <TextView
         android:id="@+id/policy_title"
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:layout_weight="9"
-        android:textSize="22sp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="2"
+        android:maxLines="2"
         android:text="政策名称"
-        android:layout_gravity="center_vertical"
-        android:textColor="@color/policy_name"/>
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:textSize="12sp" />
+
     <TextView
         android:id="@+id/policy_date"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:text="2018-8-1"
-        android:textSize="10sp"
         android:layout_gravity="center_vertical"
-        android:gravity="center"/>
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="2018-8-1"
+        android:textColor="@color/colorBlack"
+        android:textSize="10sp" />
+
+
+
+
 </LinearLayout>

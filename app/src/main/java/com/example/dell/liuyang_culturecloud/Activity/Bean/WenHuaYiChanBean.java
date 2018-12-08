@@ -1,6 +1,7 @@
-package com.example.culturecloud.Bean;
+package com.example.dell.liuyang_culturecloud.Activity.Bean;
 
-import com.example.culturecloud.StaticResources.NetworkInfo;
+
+import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,26 +10,26 @@ import java.util.List;
 /**
  * Created by DELL on 2018/12/4.
  */
-
+//接口地址：http://720yun.hnhide.com:8101/get_heritage_list/
 public class WenHuaYiChanBean {
     public int  total;
 
-    public List<WHYC> getRows() {
+    public List<Data> getRows() {
         return rows;
     }
-    public List<WHYC> rows = new ArrayList<>();
-    public static class WHYC implements Serializable{
-        private int heritage_type;//所属分类
+    public List<Data> rows = new ArrayList<>();
+    public static class Data implements Serializable {
+        private int    heritage_type;//所属分类
         private String name;
         private String cover;
-        private String absolute_url = NetworkInfo.ip_address+"/media/"+getCover();
+        private String absolute_url = NetworkInfo.IP_ADDRESS+"/media/"+getCover();
 
         public String getAbsolute_url() {
             return absolute_url;
         }
 
         private String level;
-        private String type;
+        private int type;
         private String info;
         private String url;
         private String release_time;
@@ -65,11 +66,11 @@ public class WenHuaYiChanBean {
             this.level = level;
         }
 
-        public String getType() {
+        public int getType() {
             return type;
         }
 
-        public void setType(String type) {
+        public void setType(int type) {
             this.type = type;
         }
 

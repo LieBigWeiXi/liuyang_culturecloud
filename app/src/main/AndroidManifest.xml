@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dell.liuyang_culturecloud">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/app_logo"
@@ -16,6 +19,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.WenTiChangGuan" />
+        <activity android:name=".Activity.WenHuaYiChan" />
+        <activity android:name=".Activity.WenTiDongTai" />
+        <activity android:name=".Activity.WenHuaShiChang" />
+        <activity android:name=".Activity.WenHuaLiuYang" />
+        <activity android:name=".Activity.LianXiWoMen" />
+        <activity android:name=".Activity.ShuXiangLiuYang" />
+        <activity android:name=".Activity.ZhengWuFuWu" />
+        <activity android:name=".Activity.WeatherInfoActivity" />
+        <activity android:name=".Activity.LiuYangIntroduceActivity" />
+        <activity android:name=".Activity.LiuYangJiYi" />
+        <activity android:name=".Activity.SceneryLoadActivity" />
+        <activity android:name=".Activity.SceneryPlayActivity" />
+        <activity android:name=".Activity.LiuYangZhengCe" />
+        <activity android:name=".Activity.LiuYangWenGuangJuActivity" />
+        <activity android:name=".Activity.LiuYangFame" />
+        <activity android:name=".Activity.ShowMoreInfo"></activity>
+        <activity android:name=".Activity.ShowPlaceInfo"/>
     </application>
 
 </manifest>

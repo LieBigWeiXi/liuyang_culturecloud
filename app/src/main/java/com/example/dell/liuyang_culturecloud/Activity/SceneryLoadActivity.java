@@ -1,4 +1,4 @@
-package com.example.culturecloud.Activity;
+package com.example.dell.liuyang_culturecloud.Activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,15 +11,15 @@ import android.view.View;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.example.culturecloud.Bean.MemoryBean;
-import com.example.culturecloud.R;
-import com.example.culturecloud.StaticResources.NetworkInfo;
+import com.example.dell.liuyang_culturecloud.Activity.Bean.MemoryBean;
+import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
+import com.example.dell.liuyang_culturecloud.R;
 
 public class SceneryLoadActivity extends BaseActivity {
 
-    public static Bitmap front_bitmap=null,back_bitmap=null;
+    public static Bitmap front_bitmap =null,back_bitmap =null;
     private int pic_count = 0;
-    Handler handler= new Handler(){
+    Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -51,13 +51,7 @@ public class SceneryLoadActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scenery_load);
-        findViewById(R.id.btn_id).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        setContentView(R.layout.scenery_load);
         getExtData();
     }
 
@@ -65,7 +59,7 @@ public class SceneryLoadActivity extends BaseActivity {
         Intent intent = getIntent();
         MemoryBean.Pictures picturesBean = (MemoryBean.Pictures) intent.getSerializableExtra("picture");
 
-        Glide.with(this).load(NetworkInfo.NEW_IP_ADDRESS +"/media/"+picturesBean.getNew_picture()).asBitmap().into(new SimpleTarget<Bitmap>() {
+        Glide.with(this).load(NetworkInfo.IP_ADDRESS +"/media/"+picturesBean.getNew_picture()).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 Message message = new Message();
@@ -75,7 +69,7 @@ public class SceneryLoadActivity extends BaseActivity {
             }
         });
 
-        Glide.with(this).load(NetworkInfo.NEW_IP_ADDRESS +"/media/"+picturesBean.getOld_picture()).asBitmap().into(new SimpleTarget<Bitmap>() {
+        Glide.with(this).load(NetworkInfo.IP_ADDRESS +"/media/"+picturesBean.getOld_picture()).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 Message message = new Message();
