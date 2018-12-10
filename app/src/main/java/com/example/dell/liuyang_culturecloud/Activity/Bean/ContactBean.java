@@ -1,0 +1,35 @@
+package com.example.dell.liuyang_culturecloud.Activity.Bean;
+
+/**
+ * Created by DELL on 2018/11/30.
+ */
+
+public class ContactBean {
+    String name;
+    String phone;
+    String address;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+}

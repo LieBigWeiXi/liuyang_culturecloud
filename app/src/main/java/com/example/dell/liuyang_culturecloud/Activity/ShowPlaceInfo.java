@@ -3,6 +3,7 @@ package com.example.dell.liuyang_culturecloud.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,8 @@ public class ShowPlaceInfo extends BaseActivity {
         title_text = (TextView) (findViewById(R.id.title_textView));
         introduce_web = (WebView) (findViewById(R.id.whyc_intro_web));
         info_web = (WebView) (findViewById(R.id.whyc_info_web));
+        info_web.setWebViewClient(new WebViewClient());
+        info_web.getSettings().setJavaScriptEnabled(true);
         cover_image = (ImageView) (findViewById(R.id.whyc_cover));
         Intent intent = getIntent();
         WenHuaPlaceBean.Data wtcg = (WenHuaPlaceBean.Data)intent.getSerializableExtra("Place");

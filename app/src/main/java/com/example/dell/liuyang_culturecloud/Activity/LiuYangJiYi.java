@@ -1,5 +1,6 @@
 package com.example.dell.liuyang_culturecloud.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,7 +37,6 @@ public class LiuYangJiYi extends BaseActivity {
     private GridView      oldpic_gridview;
     private RefreshLayout refreshLayout;
     private MemoryAdapter mMemoryAdapter;
-
     final String URL = NetworkInfo.IP_ADDRESS+ NetworkInfo.LIU_YANG_JI_YI;
 
     Handler handler = new Handler(){
@@ -72,6 +72,7 @@ public class LiuYangJiYi extends BaseActivity {
         mDoPostBean.setRows(10);
         mDoPostBean.setPage(1);
         //发起网络
+        http_request = doRequest.getInstance(getApplicationContext());
         http_request.doPost(URL,mDoPostBean,handler,500);
 
         oldpic_gridview = (GridView)findViewById(R.id.oldpic_gridview);

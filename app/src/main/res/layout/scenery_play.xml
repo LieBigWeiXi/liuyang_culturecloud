@@ -11,9 +11,8 @@
             android:id="@+id/scenery_layout"
             android:layout_width="680dp"
             android:layout_height="480dp"
-            android:layout_marginTop="55dp"
-            android:layout_marginLeft="140dp"
-            android:background="@color/colorBlack"/>
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="140dp" />
 
         <Button
             android:id="@+id/btn_id"

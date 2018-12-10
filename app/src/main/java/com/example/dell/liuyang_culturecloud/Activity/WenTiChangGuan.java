@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.dell.liuyang_culturecloud.Activity.Adapter.GridViewAdpater;
 import com.example.dell.liuyang_culturecloud.Activity.Adapter.PlaceGridViewAdpater;
 import com.example.dell.liuyang_culturecloud.Activity.Bean.WenHuaPlaceBean;
+import com.example.dell.liuyang_culturecloud.Activity.HttpRequest.doRequest;
 import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
 import com.example.dell.liuyang_culturecloud.R;
 import com.google.gson.Gson;
@@ -64,6 +65,7 @@ public class WenTiChangGuan extends BaseActivity {
         setContentView(R.layout.wen_ti_chang_guan);
 
         mGridViewAdpater = new PlaceGridViewAdpater(this);
+        http_request = doRequest.getInstance(getApplicationContext());
         http_request.doPost(URL,mDoPostBean,mHandler,200);
         tiyu = (LinearLayout)findViewById(R.id.ti_yu_place);
         wenhua = (LinearLayout)findViewById(R.id.wen_hua_place);

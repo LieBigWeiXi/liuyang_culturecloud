@@ -62,7 +62,11 @@ public class LiuYangZhengCe extends BaseActivity {
         policy_wv = (WebView)findViewById(R.id.zhengce_webview);
         policy_wv.getSettings().setJavaScriptEnabled(true);
         policy_wv.setWebViewClient(new WebViewClient());
+
+        mDoPostBean.setRows(50);
+        http_request = doRequest.getInstance(getApplicationContext());
         http_request.doPost(url,mDoPostBean,handler,200);
+
         mListView = (ListView)findViewById(R.id.zhengce_listView);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -75,5 +79,6 @@ public class LiuYangZhengCe extends BaseActivity {
                 policy_wv.loadUrl(policy.getUrl());
             }
         });
+
     }
 }

@@ -14,7 +14,7 @@ import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInf
 public class BaseActivity extends AppCompatActivity {
 
     String URL = NetworkInfo.IP_ADDRESS;//发起网络请求
-    doRequest  http_request = doRequest.getInstance(this);
+    doRequest  http_request;
     DoPostBean mDoPostBean  = new DoPostBean();
     //FatherBean mFatherBean;//解析出来的网络实体
     @Override

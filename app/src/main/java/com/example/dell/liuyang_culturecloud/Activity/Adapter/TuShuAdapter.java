@@ -56,7 +56,7 @@ public class TuShuAdapter extends RecyclerView.Adapter<TuShuAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tushu_pic_item,
                 parent,false);
-        view.getLayoutParams().width =width/5;
+        //view.getLayoutParams().width =width/5;
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }

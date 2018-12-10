@@ -16,6 +16,11 @@ import com.google.gson.Gson;
 public class LiuYangWenGuangJuActivity extends BaseActivity {
     WebView        mWebView ;
     WenGuangJuBean liuyangWenGuangJuBean;
+    String WEBVIEW_CONTENT = "<html><head></head><body style=\"" +
+            "text-align:justify;" +
+            "margin:10px;" +
+            "font-size:10px;" +
+            "text-indent:2em\">%s</body></html>";
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -26,8 +31,10 @@ public class LiuYangWenGuangJuActivity extends BaseActivity {
                     String response = (String)msg.obj;
                     Log.d("LiuYangWenGuangJu", "handleMessage: situation"+response);
                     liuyangWenGuangJuBean = gson.fromJson(response,WenGuangJuBean.class);
-                    String WEBVIEW_CONTENT = "<html><head></head><body style=\"text-align:justify;margin:10px;font-size:10px;text-indent:2em\">%s</body></html>";
-                    mWebView.loadData(String.format(WEBVIEW_CONTENT,liuyangWenGuangJuBean.getSituation()),"text/html;charset=UTF-8",null);
+                    mWebView.loadDataWithBaseURL(NetworkInfo.IP_ADDRESS,
+                            String.format(WEBVIEW_CONTENT,liuyangWenGuangJuBean.getSituation()),
+                            "text/html;charset=UTF-8",
+                            null,null);
                     break;
             }
         }
@@ -40,8 +47,7 @@ public class LiuYangWenGuangJuActivity extends BaseActivity {
         mWebView = (WebView)findViewById(R.id.wenguangju_webview);
         mWebView.setBackgroundColor(0);
         String url = NetworkInfo.IP_ADDRESS+ NetworkInfo.WEN_GUANG_JU;
-        DoPostBean doPostBean = new DoPostBean();
-        http_request = doRequest.getInstance(this);
-        http_request.doPost(url,doPostBean,handler,200);
+        http_request = doRequest.getInstance(getApplicationContext());
+        http_request.doPost(url,mDoPostBean,handler,200);
     }
 }

@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.dell.liuyang_culturecloud.Activity.Adapter.MarketRcyAdapter;
 import com.example.dell.liuyang_culturecloud.Activity.Adapter.TypeBeanAdapter;
@@ -33,13 +34,16 @@ public class WenHuaShiChang extends BaseActivity {
     TypeBeanAdapter typeBeanAdapter;
     List<WenHuaShiChangBean.WHSC> mWHSCList           = new ArrayList<>();
     WenHuaShiChangBean            mWenHuaShiChangBean = new WenHuaShiChangBean();
+    TextView sc_title;
 
     final  String URL = NetworkInfo.IP_ADDRESS + NetworkInfo.WEN_HUA_SHI_CHANG;
-    final  String css_style = "<html><head></head><body style=\"" +
+
+
+    final String WEBVIEW_CONTENT = "<html><head><style> body{" +
             "text-align:justify;" +
-            "margin:20px;" +
-            "font-size:15px;" +
-            "text-indent:2em\">%s</body></html>";
+            "margin:12px;" +
+            "font-size:30px;" +
+            "text-indent:2em;}</style></head><body>%s</body></html>";
 
     MarketRcyAdapter mMarketRcyAdapter;
     RecyclerView mRecyclerView;
@@ -57,8 +61,9 @@ public class WenHuaShiChang extends BaseActivity {
                     mWenHuaShiChangBean = gson.fromJson(response, WenHuaShiChangBean.class);
                     mWHSCList.addAll(mWenHuaShiChangBean.getRows());
                     mWebView.loadDataWithBaseURL(NetworkInfo.IP_ADDRESS,
-                            String.format(css_style,mWHSCList.get(0).getInfo())
+                            String.format(WEBVIEW_CONTENT,mWHSCList.get(0).getInfo())
                             ,"text/html;charset=UTF-8",null,null);
+                    sc_title.setText(mWHSCList.get(0).getName());
                     mMarketRcyAdapter.setWHSC_DataList(mWHSCList);
                     mMarketRcyAdapter.notifyDataSetChanged();
                     break;
@@ -68,27 +73,21 @@ public class WenHuaShiChang extends BaseActivity {
 
         }
     };
-   /*
-
-
-
-
-    int now_position = 0;
-
-
-   */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wen_hua_shi_chang);
+        sc_title = (TextView)findViewById(R.id.sc_title);
         typeListView = (ListView) (findViewById(R.id.wenhuashichang_listview));
         initType();
         typeBeanAdapter = new TypeBeanAdapter(this, R.layout.shichang_left_type_item,
                 mTypeBeans);
         typeBeanAdapter.notifyDataSetChanged();
         typeListView.setAdapter(typeBeanAdapter);
-
+        mDoPostBean.setType(2);
+        mDoPostBean.setRows(50);
+        http_request = doRequest.getInstance(getApplicationContext());
         http_request.doPost(URL,mDoPostBean,handler,200);
         mWebView = (WebView)findViewById(R.id.news_wv);
         mWebView.getSettings().setJavaScriptEnabled(true);
@@ -107,8 +106,10 @@ public class WenHuaShiChang extends BaseActivity {
             @Override
             public void OnClink(int id) {
                 //now_position = id;
-                mWebView.loadData(String.format(css_style,mWHSCList.get(id).getInfo()),
-                        "text/html;charset=UTF-8",null);
+                mWebView.loadDataWithBaseURL(NetworkInfo.IP_ADDRESS,
+                        String.format(WEBVIEW_CONTENT,mWHSCList.get(id).getInfo()),
+                        "text/html;charset=UTF-8",null,null);
+                sc_title.setText(mWHSCList.get(id).getName());
             }
         },mScreenWidth);
         mRecyclerView.setAdapter(mMarketRcyAdapter);
@@ -143,7 +144,6 @@ public class WenHuaShiChang extends BaseActivity {
                     DoPostBean doPostBean = new DoPostBean();
                     doPostBean.setPage(1);
                     doPostBean.setType(i+1);
-                    doPostBean.setPage(1);
                     typeBeanAdapter.setSelected_id(typeBean.getId());
                     typeBeanAdapter.notifyDataSetChanged();
                     http_request.doPost(URL,doPostBean,handler,200);

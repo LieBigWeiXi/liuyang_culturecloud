@@ -117,7 +117,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.lian_xi_wo_men_img://联系我们
-                intent = new Intent(this,LianXiWoMen.class);
+                intent = new Intent(this,ContactActivity.class);
                 startActivity(intent);
                 break;
             case R.id.shu_xiang_liu_yang_img://书香浏阳

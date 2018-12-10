@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="10">
+    android:background="@drawable/tushu_right_bkg">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="7"
-        android:orientation="horizontal"
-        android:background="@drawable/right">
+        android:layout_height="match_parent"
+        android:background="@drawable/tushu_right_bkg">
         <!--ImageView
             android:id = "@+id/iv_before"
             android:layout_width="0dp"
@@ -21,15 +18,43 @@
             android:layout_gravity="center_vertical"
             android:visibility="gone"/-->
         <ImageView
-            android:layout_width="match_parent"
             android:id="@+id/big_pic"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginRight="110dp"
+            android:layout_marginTop="40dp"
+            android:background="#fff"
             android:scaleType="centerCrop"
             android:text="Introduce" />
+
+        <TextView
+            android:id="@+id/tushu_text"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignBottom="@+id/big_pic"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="110dp"
+            android:layout_marginRight="110dp"
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:background="@color/tushu_text" />
+
+        <WebView
+            android:id="@+id/tushu_webView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginRight="110dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:padding="10dp"
+            android:layout_alignTop="@+id/tushu_text">
+        </WebView>
+
+
         <!--ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -38,27 +63,24 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:visibility="gone"/-->
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:orientation="horizontal"
-        android:layout_marginRight="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_gravity="center"
-        >
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/cul_list"
-            android:layout_width="1014dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/tushu_text"
             android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
             android:gravity="center"
-            android:scrollbarSize="5dp"
-            android:scrollbarThumbHorizontal="@color/scrollBar"
+            android:scrollbarSize="2dp"
+            android:scrollbarThumbHorizontal="@color/policy_name"
             android:scrollbars="horizontal" />
-    </LinearLayout>
 
-</LinearLayout>
+    </RelativeLayout>
+
+   <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+   </com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton>
+
+</RelativeLayout>

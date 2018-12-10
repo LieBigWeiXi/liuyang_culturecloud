@@ -3,15 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="12">
+    android:weightSum="13">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"
-        android:orientation="horizontal"
-        android:weightSum="10"
-        android:background="@drawable/right">
+        android:layout_weight="8"
+        android:background="@drawable/right"
+        android:orientation="vertical">
 
         <!--ImageView
             android:id = "@+id/iv_before"
@@ -22,17 +21,32 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:visibility="gone"/-->
-        <WebView
-            android:layout_width="0dp"
-            android:layout_weight="10"
-            android:id="@+id/news_wv"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="40dp"
+        <TextView
+            android:id="@+id/sc_title"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="20dp"
+            android:text="文章标题"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp"
-            android:padding="30dp"
-            android:background="@drawable/wtdt_bkg"/>
+            android:gravity="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/wtdt_bkg"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:orientation="vertical"
+            android:paddingLeft="55dp"
+            android:paddingRight="50dp"
+            android:paddingBottom="40dp"
+            android:paddingTop="25dp">
+
+            <WebView
+                android:layout_width="match_parent"
+                android:id="@+id/news_wv"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
         <!--ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -46,10 +60,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="3"
         android:orientation="horizontal"
-        android:layout_marginRight="55dp"
-        android:layout_marginLeft="80dp">
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/cul_list"
@@ -57,7 +71,7 @@
             android:layout_height="match_parent"
             android:scrollbars="horizontal"
             android:scrollbarThumbHorizontal="@color/scrollBar"
-            android:scrollbarSize="5dp"/>
+            android:scrollbarSize="2dp"/>
     </LinearLayout>
 
 </LinearLayout>

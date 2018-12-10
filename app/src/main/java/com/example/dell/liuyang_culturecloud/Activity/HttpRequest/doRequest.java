@@ -63,7 +63,7 @@ public class doRequest {
                         message.obj = responseData; //将返回的数据传给消息携带者Message
                         handler.sendMessage(message);
                     }else{
-                        Toast.makeText(mContext,"网络连接异常，无法获取服务器返回数据！",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(mContext,"网络连接异常，无法获取服务器返回数据！",Toast.LENGTH_SHORT).show();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

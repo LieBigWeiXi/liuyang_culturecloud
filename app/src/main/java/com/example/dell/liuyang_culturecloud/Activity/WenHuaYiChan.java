@@ -16,6 +16,7 @@ import com.example.dell.liuyang_culturecloud.Activity.Adapter.GridViewAdpater;
 import com.example.dell.liuyang_culturecloud.Activity.Adapter.TypeBeanAdapter;
 import com.example.dell.liuyang_culturecloud.Activity.Bean.TypeBean;
 import com.example.dell.liuyang_culturecloud.Activity.Bean.WenHuaYiChanBean;
+import com.example.dell.liuyang_culturecloud.Activity.HttpRequest.doRequest;
 import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
 import com.example.dell.liuyang_culturecloud.R;
 import com.google.gson.Gson;
@@ -68,7 +69,7 @@ public class WenHuaYiChan extends BaseActivity {
         initType();
         typeAdapter = new TypeBeanAdapter(this,R.layout.hesitate_left_type_item,mTypeBeans);
         typeListView.setAdapter(typeAdapter);
-
+        http_request = doRequest.getInstance(getApplicationContext());
         http_request.doPost(URL,mDoPostBean,handler,200);
 
         typeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

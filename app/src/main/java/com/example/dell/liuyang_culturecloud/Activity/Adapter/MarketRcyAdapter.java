@@ -65,7 +65,7 @@ public class MarketRcyAdapter extends RecyclerView.Adapter<MarketRcyAdapter.View
     public MarketRcyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shichang_item,
                 parent,false);
-        view.getLayoutParams().width =width/4;
+//        view.getLayoutParams().width =width/4;
         MarketRcyAdapter.ViewHolder holder = new MarketRcyAdapter.ViewHolder(view);
         return holder;
     }

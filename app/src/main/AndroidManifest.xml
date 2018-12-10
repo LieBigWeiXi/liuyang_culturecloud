@@ -15,7 +15,8 @@
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -24,7 +25,6 @@
         <activity android:name=".Activity.WenTiDongTai" />
         <activity android:name=".Activity.WenHuaShiChang" />
         <activity android:name=".Activity.WenHuaLiuYang" />
-        <activity android:name=".Activity.LianXiWoMen" />
         <activity android:name=".Activity.ShuXiangLiuYang" />
         <activity android:name=".Activity.ZhengWuFuWu" />
         <activity android:name=".Activity.WeatherInfoActivity" />
@@ -37,6 +37,7 @@
         <activity android:name=".Activity.LiuYangFame" />
         <activity android:name=".Activity.ShowMoreInfo"></activity>
         <activity android:name=".Activity.ShowPlaceInfo"/>
+        <activity android:name=".Activity.ContactActivity"/>
     </application>
 
 </manifest>

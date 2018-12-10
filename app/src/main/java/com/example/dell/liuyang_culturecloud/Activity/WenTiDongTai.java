@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 
 import com.example.dell.liuyang_culturecloud.Activity.Adapter.DynamicAdapter;
 import com.example.dell.liuyang_culturecloud.Activity.Bean.WenTiDongTaiBean;
+import com.example.dell.liuyang_culturecloud.Activity.HttpRequest.doRequest;
 import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
 import com.example.dell.liuyang_culturecloud.R;
 import com.google.gson.Gson;
@@ -64,6 +65,8 @@ public class WenTiDongTai extends BaseActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wen_ti_dong_tai);
+        mDoPostBean.setRows(50);
+        http_request = doRequest.getInstance(getApplicationContext());
         http_request.doPost(URL,mDoPostBean,hander,200);
         layout1 = (LinearLayout)findViewById(R.id.work_dynamic);
         layout2 = (LinearLayout)findViewById(R.id.famer_activity);
@@ -74,8 +77,8 @@ public class WenTiDongTai extends BaseActivity implements View.OnClickListener{
         webView = (WebView)findViewById(R.id.work_dynamic_webview);
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setUserAgentString("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36");
-        webView.setInitialScale(50);//缩小50%
+        //webView.getSettings().setUserAgentString("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36");
+        //webView.setInitialScale(50);//缩小50%
         layout1.setOnClickListener(this);
         layout2.setOnClickListener(this);
         layout3.setOnClickListener(this);
