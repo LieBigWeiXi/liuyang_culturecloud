@@ -16,16 +16,21 @@ import com.example.dell.liuyang_culturecloud.R;
 
 
 public class LiuYangFame extends BaseActivity {
-    ImageView show_iamge;
+    /*ImageView show_iamge;
     TextView  title_text;
     WebView   content_text;
-    Button    return_button;
+    Button    return_button;*/
+    TextView  title_text;
+    WebView   content_text;
+    ImageView show_iamge;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.liuyang_fame);
-        show_iamge = (ImageView) findViewById(R.id.image_view_fy);
+        //setContentView(R.layout.liuyang_fame);
+        setContentView(R.layout.show_fame_info);
+       /* show_iamge = (ImageView) findViewById(R.id.image_view_fy);
         content_text = (WebView)findViewById(R.id.text_fy);
         title_text = (TextView)findViewById(R.id.title_text);
         return_button = (Button)findViewById(R.id.information_return);
@@ -34,8 +39,12 @@ public class LiuYangFame extends BaseActivity {
             public void onClick(View view) {
                 finish();
             }
-        });
-        getExtData();
+        });*/
+
+       show_iamge = (ImageView)findViewById(R.id.whyc_cover) ;
+       title_text = (TextView)findViewById(R.id.text_intro);
+       content_text = (WebView)findViewById(R.id.whyc_info_web) ;
+       getExtData();
 
     }
     private void getExtData(){
@@ -53,11 +62,16 @@ public class LiuYangFame extends BaseActivity {
             String html_data = whyc.getInfo();
             title_text.setText(whyc.getName());
             //content_text.loadData(String.format(WEBVIEW_CONTENT,html_data),"text/html;charset=UTF-8",null);
-            content_text.loadDataWithBaseURL(NetworkInfo.IP_ADDRESS,
-                    String.format(WEBVIEW_CONTENT,html_data),
-                    "text/html;charset=UTF-8",
-                    null,
-                    null);
+            if(whyc.getUrl()!=null){
+                content_text.loadUrl(whyc.getUrl());
+            }else{
+                content_text.loadDataWithBaseURL(NetworkInfo.IP_ADDRESS,
+                        String.format(WEBVIEW_CONTENT,html_data),
+                        "text/html;charset=UTF-8",
+                        null,
+                        null);
+            }
+
             Glide.with(this).load(NetworkInfo.IP_ADDRESS+"/media/"+whyc.getCover()).into(show_iamge);
         }
 

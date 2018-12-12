@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dell.liuyang_culturecloud.Activity.WenTiDongTai"
+    android:background="@drawable/wenhualiuyang_bkg">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text=" 文 化 影 像"
+        android:textColor="#fff"
+        android:textStyle="italic|bold"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="13dp"/>
+
+    <RelativeLayout
+        android:id="@+id/first_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/work_dynamic_layout"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton>
+
+</RelativeLayout>
+

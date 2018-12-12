@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dell.liuyang_culturecloud.Activity.ShowMoreInfo"
+    android:background="@drawable/fame_bkg2">
+
+    <!--TextView
+        android:id="@+id/title_textView"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="35dp"
+        android:text="标题"
+        android:textSize="15sp"
+        android:textColor="#fff"
+        android:gravity="center" /-->
+    <TextView
+        android:id="@+id/no_pic"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:layout_alignEnd="@+id/text_intro"
+        android:layout_alignRight="@+id/text_intro"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="41dp"
+        android:layout_marginTop="30dp"
+        android:text="暂无图片" />
+
+    <ImageView
+        android:id="@+id/whyc_cover"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:layout_alignEnd="@+id/text_intro"
+        android:layout_alignRight="@+id/text_intro"
+        android:layout_below="@+id/title_textView"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="41dp"
+        android:layout_marginTop="30dp"
+        android:scaleType="fitXY"
+        android:background="@color/policy_name" />
+
+    <!--WebView
+        android:id="@+id/whyc_intro_web"
+        android:layout_width="400dp"
+        android:layout_height="180dp"
+        android:layout_margin="8dp"
+        android:layout_below="@+id/whyc_cover">
+    </WebView-->
+    <TextView
+        android:id="@+id/text_intro"
+        android:layout_width="400dp"
+        android:layout_height="90dp"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="暂无简介"
+        android:layout_below="@+id/whyc_cover"/>
+
+    <WebView
+        android:id="@+id/whyc_info_web"
+        android:layout_width="545dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true">
+    </WebView>
+
+    <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

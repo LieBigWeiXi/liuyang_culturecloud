@@ -34,18 +34,20 @@ public class WenHuaLiuYang extends BaseActivity implements View.OnClickListener{
                 intent.putExtra("url","http://www.liuyang.gov.cn/mlly/mobile/index.html#p");
                 startActivity(intent);
                 break;
-            case R.id.liuyang_jiyi:
-                intent = new Intent(this,LiuYangJiYi.class);
+            case R.id.liuyang_jiyi://修改浏阳影像-品牌活动
+                intent = new Intent(this,LiuYangYinXiang.class);
                 startActivity(intent);
 //                Toast.makeText(this, "浏阳记忆！", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.liuyang_wenguangju:
-                intent = new Intent(this,LiuYangWenGuangJuActivity.class);
+            case R.id.liuyang_wenguangju://修改浏阳政策12.11
+                intent = new Intent(this,LiuYangZhengCe.class);
+//                intent = new Intent(this,LiuYangWenGuangJuActivity.class);
                 startActivity(intent);
 //                Toast.makeText(this, "浏阳文广局暂无资料！", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.liuyang_zhengce:
-                intent = new Intent(this,LiuYangZhengCe.class);
+            case R.id.liuyang_zhengce://修改 浏阳名人12.10
+//                intent = new Intent(this,LiuYangZhengCe.class);
+                intent = new Intent(this,LiuYangFameActivity.class);
                 startActivity(intent);
 //                Toast.makeText(this, "浏阳政策！", Toast.LENGTH_SHORT).show();
                 break;

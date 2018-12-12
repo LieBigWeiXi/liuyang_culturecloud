@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:horizontalSpacing="25dp"
-            android:numColumns="4"
+            android:numColumns="3"
             android:stretchMode="columnWidth"
             android:verticalSpacing="25dp"
             android:visibility="visible">

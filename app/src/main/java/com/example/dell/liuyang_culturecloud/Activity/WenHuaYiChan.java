@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dell.liuyang_culturecloud.Activity.Adapter.GridViewAdpater;
@@ -35,10 +36,12 @@ public class WenHuaYiChan extends BaseActivity {
     List<TypeBean> mTypeBeans = new ArrayList<>();
     ListView typeListView ;
     TypeBeanAdapter typeAdapter;
+
     WenHuaYiChanBean mWenHuaYiChanBean = new WenHuaYiChanBean();
     List<WenHuaYiChanBean.Data> mDataList = new ArrayList<>();
     GridView mGridView;
     GridViewAdpater mGridViewAdpater;
+    TextView now_page,total_page;
     final String URL = NetworkInfo.IP_ADDRESS+NetworkInfo.WEN_HUA_YI_CHAN_URL;
 
     Handler handler = new Handler(){
@@ -52,6 +55,8 @@ public class WenHuaYiChan extends BaseActivity {
                     String response = (String)msg.obj;
                     Log.d("WenHuaYiChan", "handleMessage: 200 response :"+ response );
                     mWenHuaYiChanBean = gson.fromJson(response,WenHuaYiChanBean.class);
+                    String totalPage = String.valueOf(mWenHuaYiChanBean.total/mDoPostBean.getRows()+1);
+                    total_page.setText(totalPage);
                     mDataList.addAll(mWenHuaYiChanBean.getRows());
                     Log.d("WenHuaYiChan", "handleMessage: 200 datasize :"+ mDataList.size());
                     mGridViewAdpater.setWHYCList(mDataList);
@@ -65,11 +70,13 @@ public class WenHuaYiChan extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wen_hua_yi_chan);
+        now_page = (TextView)findViewById(R.id.now_page);
+        total_page = (TextView)findViewById(R.id.total_page);
         typeListView = (ListView)findViewById(R.id.wenhuayichan_listview);
         initType();
         typeAdapter = new TypeBeanAdapter(this,R.layout.hesitate_left_type_item,mTypeBeans);
         typeListView.setAdapter(typeAdapter);
-        http_request = doRequest.getInstance(getApplicationContext());
+        http_request = http_request.getInstance(getApplicationContext());
         http_request.doPost(URL,mDoPostBean,handler,200);
 
         typeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -125,6 +132,7 @@ public class WenHuaYiChan extends BaseActivity {
             public void onLoadmore(RefreshLayout refreshlayout) {
                 if(mDataList.size()<mWenHuaYiChanBean.total){
                     mDoPostBean.setPage(mDoPostBean.getPage() + 1 );
+                    now_page.setText(String.valueOf(mDoPostBean.getPage()));
                     http_request.doPost(URL,mDoPostBean,handler,200);
                 }else {
                     Toast.makeText(WenHuaYiChan.this,"全部加载完成",Toast.LENGTH_SHORT).show();
@@ -137,7 +145,7 @@ public class WenHuaYiChan extends BaseActivity {
     }
     private void initType(){
         TypeBean typeBean;
-        String[]type_names = {"文物保护","非遗保护","浏阳名人"};
+        String[]type_names = {"文物保护","非遗保护"};
         for(int i = 0;i<type_names.length;i++){
             typeBean = new TypeBean();
             typeBean.setId(i);

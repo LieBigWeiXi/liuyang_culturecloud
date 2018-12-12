@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.dell.liuyang_culturecloud.Activity.Adapter.DynamicAdapter;
 import com.example.dell.liuyang_culturecloud.Activity.Bean.WenTiDongTaiBean;
@@ -22,21 +23,24 @@ import com.example.dell.liuyang_culturecloud.Activity.HttpRequest.doRequest;
 import com.example.dell.liuyang_culturecloud.Activity.StaticResources.NetworkInfo;
 import com.example.dell.liuyang_culturecloud.R;
 import com.google.gson.Gson;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WenTiDongTai extends BaseActivity implements View.OnClickListener{
+public class WenTiDongTai extends BaseActivity{
 
     final String URL = NetworkInfo.IP_ADDRESS+NetworkInfo.WEN_HUA_DONG_TAI;
-    LinearLayout layout1,layout2,layout3;
-    RelativeLayout mLinearLayout;
     DynamicAdapter mDynamicAdapter;
-    WenTiDongTaiBean mWenTiDongTaiBean = new WenTiDongTaiBean();
-    List<WenTiDongTaiBean.Data> mDataList = new ArrayList<>();
+    WenTiDongTaiBean            mWenTiDongTaiBean = new WenTiDongTaiBean();
+    List<WenTiDongTaiBean.Data> mDataList         = new ArrayList<>();
     ListView mListView;
-    WebView webView;
-    ImageView mImageView;
+    WebView  webView;
 
     Handler hander = new Handler(){
         @Override
@@ -46,42 +50,34 @@ public class WenTiDongTai extends BaseActivity implements View.OnClickListener{
                 case 200:
                     Gson gson = new Gson();
                     String response = (String) msg.obj;
-                    Log.d("WenTiDongTai", "handleMessage: response:"+response);
+                    Log.d("DongTai", "handleMessage: response:"+response);
                     mWenTiDongTaiBean = gson.fromJson(response,WenTiDongTaiBean.class);
                     mDataList.addAll(mWenTiDongTaiBean.rows);
-                    Log.d("WenTiDongTai", "handleMessage:  mDataList:"+ mDataList.size());
+                    Log.d("DongTai", "handleMessage:  mDataList:"+ mDataList.size());
                     mDynamicAdapter = new DynamicAdapter(WenTiDongTai.this,R.layout.dynamic_item_layout,
                             mDataList);
                     mDynamicAdapter.notifyDataSetChanged();
                     webView.loadUrl(mDataList.get(0).getUrl());
-                    Log.d("WenTi", "onCreate:mDynamicAdapter "+mDynamicAdapter.getCount());
+                    Log.d("DongTai", "onCreate:mDynamicAdapter "+mDynamicAdapter.getCount());
                     mListView.setAdapter(mDynamicAdapter);
                     break;
             }
         }
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wen_ti_dong_tai);
-        mDoPostBean.setRows(50);
+
         http_request = doRequest.getInstance(getApplicationContext());
-        http_request.doPost(URL,mDoPostBean,hander,200);
-        layout1 = (LinearLayout)findViewById(R.id.work_dynamic);
-        layout2 = (LinearLayout)findViewById(R.id.famer_activity);
-        layout3 = (LinearLayout)findViewById(R.id.people_things);
-        mLinearLayout = (RelativeLayout) findViewById(R.id.first_layout);
-        mImageView = (ImageView)findViewById(R.id.people_things_img);
+        mDoPostBean.setType(3);//工作动态type_id=3
+                http_request.doPost(URL,mDoPostBean,hander,200);
+
         mListView = (ListView)findViewById(R.id.work_dynamic_listView);
         webView = (WebView)findViewById(R.id.work_dynamic_webview);
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
-        //webView.getSettings().setUserAgentString("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36");
-        //webView.setInitialScale(50);//缩小50%
-        layout1.setOnClickListener(this);
-        layout2.setOnClickListener(this);
-        layout3.setOnClickListener(this);
+
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -100,42 +96,31 @@ public class WenTiDongTai extends BaseActivity implements View.OnClickListener{
 
             }
         });
-    }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.work_dynamic:
-                mDoPostBean.setType(3);
-                findViewById(R.id.work_dynamic).setBackgroundResource(R.drawable.chg_bkg);
-                findViewById(R.id.famer_activity).setBackgroundResource(0);
-                findViewById(R.id.people_things).setBackgroundResource(0);
+        RefreshLayout refreshLayout = (RefreshLayout)findViewById(R.id.refreshLayout);
+        refreshLayout.setRefreshHeader(new MaterialHeader(this));
+        refreshLayout.setRefreshFooter(new ClassicsFooter(this).setSpinnerStyle(SpinnerStyle.Scale));
+
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
                 mDataList = new ArrayList<>();
+                mDoPostBean.setPage(1);
                 http_request.doPost(URL,mDoPostBean,hander,200);
-                mImageView.setVisibility(View.GONE);
-                mLinearLayout.setVisibility(View.VISIBLE);
-                break;
-            case R.id.famer_activity:
-                mDoPostBean.setType(0);
-                findViewById(R.id.famer_activity).setBackgroundResource(R.drawable.chg_bkg);
-                findViewById(R.id.work_dynamic).setBackgroundResource(0);
-                findViewById(R.id.people_things).setBackgroundResource(0);
-                mDataList = new ArrayList<>();
-                http_request.doPost(URL,mDoPostBean,hander,200);
-                mLinearLayout.setVisibility(View.VISIBLE);
-                mImageView.setVisibility(View.GONE);
-                break;
-            case R.id.people_things:
-                /*mDoPostBean.setType(2);
-                mDataList = new ArrayList<>();
-                http_request.doPost(URL,mDoPostBean,hander,200);*/
-                findViewById(R.id.people_things).setBackgroundResource(R.drawable.chg_bkg);
-                findViewById(R.id.famer_activity).setBackgroundResource(0);
-                findViewById(R.id.work_dynamic).setBackgroundResource(0);
-                mImageView.setVisibility(View.VISIBLE);
-                mLinearLayout.setVisibility(View.GONE);
-                mImageView.setImageResource(R.drawable.people_things);
-                break;
-        }
+                refreshlayout.finishRefresh(2000);
+            }
+        });
+        refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                if(mDataList.size()<mWenTiDongTaiBean.getTotal()){
+                    mDoPostBean.setPage(mDoPostBean.getPage() + 1 );
+                    http_request.doPost(URL,mDoPostBean,hander,200);
+                }else {
+                    Toast.makeText(WenTiDongTai.this,"全部加载完成",Toast.LENGTH_SHORT).show();
+                }
+                refreshlayout.finishLoadmore(2000);
+            }
+        });
     }
 }

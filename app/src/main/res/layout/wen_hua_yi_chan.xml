@@ -31,11 +31,13 @@
                 android:stretchMode="columnWidth"
                 android:verticalSpacing="15dp"
                 android:visibility="visible" />
+
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 
     </LinearLayout>
-
+    <include
+        layout="@layout/page_layout"/>
 
 
     <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton

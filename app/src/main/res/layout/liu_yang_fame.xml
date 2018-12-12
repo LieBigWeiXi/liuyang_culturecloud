@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/wenhualiuyang_bkg">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="浏 阳 名 人"
+            android:textColor="#fff"
+            android:textStyle="italic|bold"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="5dp"/>
+        <Button
+            android:id="@+id/old_fame"
+            android:layout_width="375dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:text="旧民主主义时期"/>
+        <Button
+            android:id="@+id/new_fame"
+            android:layout_width="375dp"
+            android:layout_height="match_parent"
+            android:textColor="#fff"
+            android:background="@color/colorGray"
+            android:text="新民主主义时期"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlPrimaryColor="@color/colorGray"
+            app:srlAccentColor="@android:color/white"
+            app:srlEnablePreviewInEditMode="true">
+            <GridView
+                android:layout_margin="10dp"
+                android:id="@+id/fame_gridview"
+                android:layout_width="match_parent"
+                android:scaleType="fitXY"
+                android:layout_height="match_parent"
+                android:horizontalSpacing="15dp"
+                android:numColumns="5"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="25dp"
+                android:visibility="visible" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <com.example.dell.liuyang_culturecloud.Activity.Views.ReturnButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <include
+            layout="@layout/page_layout"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -39,11 +39,16 @@ public class WenHuaShiChang extends BaseActivity {
     final  String URL = NetworkInfo.IP_ADDRESS + NetworkInfo.WEN_HUA_SHI_CHANG;
 
 
-    final String WEBVIEW_CONTENT = "<html><head><style> body{" +
+   /* final String WEBVIEW_CONTENT = "<html><head><style> body{" +
             "text-align:justify;" +
             "margin:12px;" +
-            "font-size:30px;" +
-            "text-indent:2em;}</style></head><body>%s</body></html>";
+            "font-size:14px;" +
+            "text-indent:2em;}</style></head><body>%s</body></html>";*/
+    String WEBVIEW_CONTENT = "<html><head></head><body style=\"" +
+            "text-align:justify;" +
+            "margin:10px;" +
+            "font-size:40px;" +
+            "text-indent:2em\">%s</body></html>";
 
     MarketRcyAdapter mMarketRcyAdapter;
     RecyclerView mRecyclerView;
@@ -60,6 +65,9 @@ public class WenHuaShiChang extends BaseActivity {
                     Gson gson = new Gson();
                     mWenHuaShiChangBean = gson.fromJson(response, WenHuaShiChangBean.class);
                     mWHSCList.addAll(mWenHuaShiChangBean.getRows());
+                    mWebView.loadDataWithBaseURL(NetworkInfo.IP_ADDRESS,
+                            String.format(WEBVIEW_CONTENT,mWHSCList.get(0).getInfo())
+                            ,"text/html;charset=UTF-8",null,null);
                     mWebView.loadDataWithBaseURL(NetworkInfo.IP_ADDRESS,
                             String.format(WEBVIEW_CONTENT,mWHSCList.get(0).getInfo())
                             ,"text/html;charset=UTF-8",null,null);
@@ -86,7 +94,7 @@ public class WenHuaShiChang extends BaseActivity {
         typeBeanAdapter.notifyDataSetChanged();
         typeListView.setAdapter(typeBeanAdapter);
         mDoPostBean.setType(2);
-        mDoPostBean.setRows(50);
+        //mDoPostBean.setRows(50);
         http_request = doRequest.getInstance(getApplicationContext());
         http_request.doPost(URL,mDoPostBean,handler,200);
         mWebView = (WebView)findViewById(R.id.news_wv);
@@ -109,11 +117,14 @@ public class WenHuaShiChang extends BaseActivity {
                 mWebView.loadDataWithBaseURL(NetworkInfo.IP_ADDRESS,
                         String.format(WEBVIEW_CONTENT,mWHSCList.get(id).getInfo()),
                         "text/html;charset=UTF-8",null,null);
+                mWebView.loadDataWithBaseURL(NetworkInfo.IP_ADDRESS,
+                        String.format(WEBVIEW_CONTENT,mWHSCList.get(id).getInfo()),
+                        "text/html;charset=UTF-8",null,null);
                 sc_title.setText(mWHSCList.get(id).getName());
             }
         },mScreenWidth);
         mRecyclerView.setAdapter(mMarketRcyAdapter);
-
+        mRecyclerView.addOnScrollListener(mOnScrollListener);
 
         typeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -141,20 +152,37 @@ public class WenHuaShiChang extends BaseActivity {
                     //mRecyclerView.setVisibility(View.VISIBLE);
                     findViewById(R.id.wenhualiuyang_layout).setVisibility(View.VISIBLE);
                     url_webview.setVisibility(View.GONE);
-                    DoPostBean doPostBean = new DoPostBean();
-                    doPostBean.setPage(1);
-                    doPostBean.setType(i+1);
+                    mDoPostBean.setPage(1);
+                    mDoPostBean.setType(i+1);
                     typeBeanAdapter.setSelected_id(typeBean.getId());
                     typeBeanAdapter.notifyDataSetChanged();
-                    http_request.doPost(URL,doPostBean,handler,200);
+                    http_request.doPost(URL,mDoPostBean,handler,200);
                 }
             }
         });
     }
+    private RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
 
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView,dx,dy);
+        }
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+            int se = recyclerView.computeHorizontalScrollExtent();
+            int so = recyclerView.computeHorizontalScrollOffset();
+            int sr = recyclerView.computeHorizontalScrollRange();
+            if(newState == 0 && se+so ==sr){
+                int page = mDoPostBean.getPage()+1;
+                mDoPostBean.setPage(page) ;
+                http_request.doPost(URL,mDoPostBean,handler,200);
+            }
+        }
+    };
     private void initType() {
         TypeBean typeBean;
-        String[] type_names = { "行政许可", "文化市场综合执法", "扫黄打非"};
+        String[] type_names = { "行政审批", "文化市场综合执法", "扫黄打非"};
         for (int i = 0; i < type_names.length; i++) {
             typeBean = new TypeBean();
             typeBean.setId(i);
